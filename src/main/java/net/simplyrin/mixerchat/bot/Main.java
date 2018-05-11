@@ -30,20 +30,19 @@ import net.simplyrin.mixerchat.bot.utils.Config;
  *
  * Mixer のチャットを Discord へ送信するもの。
  *
- * Copyright (C) 2018 SimplyRin
+ *  Copyright 2018 SimplyRin
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 public class Main {
 
@@ -70,6 +69,8 @@ public class Main {
 			config.set("Discord.Guild", "GUILD");
 			config.set("Discord.Channel-ID", "CHANNEL-ID");
 			config.set("Discord.Game", "GAME");
+
+			config.set("Discord.User.224428706209202177.Admin", false);
 
 			config.set("Mixer.Token", "TOKEN");
 
@@ -137,15 +138,13 @@ public class Main {
 				Guild guild = jda.getGuildById(getConfig().getString("Discord.Guild"));
 				MessageChannel channel = guild.getTextChannelById(getConfig().getString("Discord.Channel-ID"));
 
-				channel.sendMessage("[" + Logger.getTime() + " | Mixer] " + sender + ": " + message).complete();
+				channel.sendMessage("[" + Logger.getTime() + "] " + sender + ": " + message).complete();
 			});
 		}
 	}
 
 	public static Configuration getConfig() {
-		File file = new File("config.yml");
-		Configuration config = Config.getConfig(file);
-		return config;
+		return Config.getConfig("config.yml");
 	}
 
 }

@@ -1,10 +1,10 @@
 package net.simplyrin.mixerchat.bot;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import net.dv8tion.jda.core.entities.User;
+import net.md_5.bungee.config.Configuration;
 
 /**
- * Created by SimplyRin on 2018/05/10
+ * Created by SimplyRin on 2018/05/11
  *
  *  Copyright 2018 SimplyRin
  *
@@ -20,17 +20,15 @@ import java.util.Date;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-public class Logger {
+public class PermissionChecker {
 
-	public static void println(String args) {
-		System.out.println("[" + getTime() + "] " + args);
-	}
+	public static boolean isAdmin(User user) {
+		if(user == null) {
+			return false;
+		}
 
-	public static String getTime() {
-		Date date = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-
-		return sdf.format(date);
+		Configuration config = Main.getConfig();
+		return config.getBoolean("Discord.User." + user.getId() + ".Admin");
 	}
 
 }
