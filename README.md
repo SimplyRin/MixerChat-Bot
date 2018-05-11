@@ -46,7 +46,7 @@ Mixer:
 [Issues](https://github.com/SimplyRin/MixerChat-Bot/issues) または [Discord Server](https://discord.gg/9vEecBu) にて報告をお願い致します。
 
 # ライセンス
-[GPLv3](https://github.com/SimplyRin/MixerChat-Bot/blob/master/LICENSE.md) に基づき、作成/配布しています。
+[Apache-2.0](https://github.com/SimplyRin/MixerChat-Bot/blob/master/LICENSE.md) に基づき、作成/配布しています。
 
 # 使用しているライブラリ
 - [JDA](https://github.com/DV8FromTheWorld/JDA) v3.6.0_362
